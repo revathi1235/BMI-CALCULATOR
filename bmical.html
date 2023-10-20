@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+ <style>
+   body {
+            font-family: Arial, sans-serif;
+
+        }
+        .container {
+            max-width: 400px;
+        
+            text-align: center;
+            background-color: aqua;
+            height: 300px;
+            width: 400px;
+            margin-left: 250px;
+            box-shadow: 2px 5px 6px 7px;
+            margin-top: 50px; 
+            
+        }
+        h1 {
+            color: #e90f0f;
+                    }
+        #bmi-form {
+            margin-top: 20px;
+        }
+ </style>
+</head>
+<body >
+    <div class="container">
+        <h1><u>BMI Calculator</u></h1>
+        <form id="bmi-form">
+            <label for="weight" style="font-size: large; padding: 2px;"><b>Weight (kg):</b></label>
+            <input type="number" id="weight"><br><br>
+
+            <label for="height" style="font-size: large; padding: 2px;"><b>Height (cm):</b></label>
+            <input type="number" id="height" ><br><br>
+
+            <input type="submit" style="font-size: larger;" value="Calculate">
+        </form>
+
+        <h2>Your BMI:</h2>
+        <p id="bmi-result"></p>
+    </div>
+
+    <script>
+
+
+const form = document.getElementById("bmi-form");
+        const weightInput = document.getElementById("weight");
+        const heightInput = document.getElementById("height");
+        const bmiResult = document.getElementById("bmi-result");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const weight = parseFloat(weightInput.value);
+            const height = parseFloat(heightInput.value) / 100; // Convert height to meters
+            const bmi = calculateBMI(weight, height);
+
+            bmiResult.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+        });
+
+        function calculateBMI(weight, height) {
+            return weight / (height * height);
+        }
+    </script>
+</body>
+</html>
